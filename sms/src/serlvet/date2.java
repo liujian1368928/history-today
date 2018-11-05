@@ -34,26 +34,26 @@ public class date2 extends HttpServlet {
 	    public static final int DEF_READ_TIMEOUT = 30000;
 	    public static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
 	 
-	    //ÅäÖÃÄúÉêÇëµÄKEY
-	    public static final String APPKEY ="fdcebfc134881574b100023be2c193de";
+	    //é…ç½®æ‚¨ç”³è¯·çš„KEY
+	    public static final String APPKEY ="";
 	 
 	   
-	    //1.ÊÂ¼şÁĞ±í
+	    //1.äº‹ä»¶åˆ—è¡¨
 	    public static JSONObject getRequest1(String mouth,String day){
 	        String result =null;
 	        JSONObject object=null;
-	        String url ="http://api.juheapi.com/japi/toh";//ÇëÇó½Ó¿ÚµØÖ·
-	        Map params = new HashMap();//ÇëÇó²ÎÊı
-	            params.put("key",APPKEY);//Ó¦ÓÃAPPKEY(Ó¦ÓÃÏêÏ¸Ò³²éÑ¯)
-	            params.put("v","1.0");//°æ±¾£¬µ±Ç°£º1.0
-	            params.put("month",mouth);//ÔÂ·İ£¬Èç£º10
-	            params.put("day",day);//ÈÕ£¬Èç£º1
+	        String url ="http://api.juheapi.com/japi/toh";//è¯·æ±‚æ¥å£åœ°å€
+	        Map params = new HashMap();//è¯·æ±‚å‚æ•°
+	            params.put("key",APPKEY);//åº”ç”¨APPKEY(åº”ç”¨è¯¦ç»†é¡µæŸ¥è¯¢)
+	            params.put("v","1.0");//ç‰ˆæœ¬ï¼Œå½“å‰ï¼š1.0
+	            params.put("month",mouth);//æœˆä»½ï¼Œå¦‚ï¼š10
+	            params.put("day",day);//æ—¥ï¼Œå¦‚ï¼š1
 	 
 	        try {
 	            result =net(url, params, "GET");
 	            object = JSONObject.fromObject(result);
 	            if(object.getInt("error_code")==0){
-	            	System.out.println("objµÄÖµ"+object);
+	            	System.out.println("objçš„å€¼"+object);
 	            	
 	               // System.out.println(object.get("result"));
 	            }else{
@@ -65,14 +65,14 @@ public class date2 extends HttpServlet {
 	        return object;
 	    }
 	 
-	    //2.¸ù¾İID²éÑ¯ÊÂ¼şÏêÇé
+	    //2.æ ¹æ®IDæŸ¥è¯¢äº‹ä»¶è¯¦æƒ…
 	  /*  public static void getRequest2(){
 	        String result =null;
-	        String url ="http://api.juheapi.com/japi/tohdet";//ÇëÇó½Ó¿ÚµØÖ·
-	        Map params = new HashMap();//ÇëÇó²ÎÊı
-	            params.put("key",APPKEY);//Ó¦ÓÃAPPKEY(Ó¦ÓÃÏêÏ¸Ò³²éÑ¯)
-	            params.put("v","");//°æ±¾£¬µ±Ç°£º1.0
-	            params.put("id","");//ÊÂ¼şID
+	        String url ="http://api.juheapi.com/japi/tohdet";//è¯·æ±‚æ¥å£åœ°å€
+	        Map params = new HashMap();//è¯·æ±‚å‚æ•°
+	            params.put("key",APPKEY);//åº”ç”¨APPKEY(åº”ç”¨è¯¦ç»†é¡µæŸ¥è¯¢)
+	            params.put("v","");//ç‰ˆæœ¬ï¼Œå½“å‰ï¼š1.0
+	            params.put("id","");//äº‹ä»¶ID
 	 
 	        try {
 	            result =net(url, params, "GET");
@@ -90,16 +90,16 @@ public class date2 extends HttpServlet {
 	 
 	 
 	    public static void main(String[] args) {
-	    	System.out.println("ÔÚÔËĞĞ");
+	    	System.out.println("åœ¨è¿è¡Œ");
 	    	
 	    }
 	 
 	    /**
 	     *
-	     * @param strUrl ÇëÇóµØÖ·
-	     * @param params ÇëÇó²ÎÊı
-	     * @param method ÇëÇó·½·¨
-	     * @return  ÍøÂçÇëÇó×Ö·û´®
+	     * @param strUrl è¯·æ±‚åœ°å€
+	     * @param params è¯·æ±‚å‚æ•°
+	     * @param method è¯·æ±‚æ–¹æ³•
+	     * @return  ç½‘ç»œè¯·æ±‚å­—ç¬¦ä¸²
 	     * @throws Exception
 	     */
 	    public static String net(String strUrl, Map params,String method) throws Exception {
@@ -153,7 +153,7 @@ public class date2 extends HttpServlet {
 	        return rs;
 	    }
 	 
-	    //½«mapĞÍ×ªÎªÇëÇó²ÎÊıĞÍ
+	    //å°†mapå‹è½¬ä¸ºè¯·æ±‚å‚æ•°å‹
 	    public static String urlencode(Map<String,Object>data) {
 	        StringBuilder sb = new StringBuilder();
 	        for (Map.Entry i : data.entrySet()) {
@@ -163,7 +163,7 @@ public class date2 extends HttpServlet {
 	                e.printStackTrace();
 	            }
 	        }
-	       // System.out.println("ÕâÊÇÇëÇóµÄÊı¾İ"+sb.toString());//ÇëÇóµÄÁ´½ÓÊı¾İµØÖ·
+	       // System.out.println("è¿™æ˜¯è¯·æ±‚çš„æ•°æ®"+sb.toString());//è¯·æ±‚çš„é“¾æ¥æ•°æ®åœ°å€
 	        return sb.toString();
 	    }
     /**
@@ -188,7 +188,7 @@ public class date2 extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		System.out.println("µ½postÖĞ");
+		System.out.println("åˆ°postä¸­");
 		String mouth=request.getParameter("mouth");
 		String day=request.getParameter("day");
 		//System.out.println(mouth+","+day);
